@@ -8,8 +8,9 @@ const urlbox = require('urlbox');
     const page = await browser.newPage();
     const wait = async (selector) => await page.waitForSelector(selector);
 
-    const frequency = 3;
-    const mobileNumber = "6380719842";
+    // Get frequency and mobile number from command-line arguments
+    const frequency = parseInt(process.argv[2]) || 3; // Default to 3 if not provided
+    const mobileNumber = process.argv[3] || "9445007578"; // Default number if not provided
     const smsInterval = 35;
 
     await page.goto('https://www.rummycircle.com/baf.html?11141705&baf_promo_code=FUZZ');
@@ -31,3 +32,8 @@ const urlbox = require('urlbox');
     console.error('Error occurred:', error);
   }
 })();
+
+
+
+// node your-script.js 5 1234567890
+
